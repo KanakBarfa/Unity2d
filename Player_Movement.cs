@@ -12,11 +12,13 @@ public class Player_Movement : MonoBehaviour
     private bool isGrounded;
     public GameObject StartPoint;
     public AppleCounter ac;
+    public ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isGrounded = false;
+        ps.Pause();
     }
 
     // Update is called once per frame
@@ -70,6 +72,9 @@ public class Player_Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Apple"))
         {
             ac.apples++;
+            if (ac.apples == 7){
+                ps.Play();
+            }
             Destroy(other.gameObject);
         }
     }

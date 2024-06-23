@@ -9,6 +9,7 @@ public class Pause_script : MonoBehaviour
     public GameObject WinMenu;
     public AppleCounter ac;
     public Animator anim;
+    public ParticleSystem ps;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +50,7 @@ public class Pause_script : MonoBehaviour
     {
         WinMenu.SetActive(false);
         ac.apples = 0;
+        ps.Stop();
         anim.SetBool("Open", false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
